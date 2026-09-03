@@ -1,0 +1,124 @@
+[
+  {
+    "id": "emp-01",
+    "name": "Alice Chen",
+    "email": "alice.chen@northwind.example",
+    "department": "Engineering",
+    "avatarUrl": "https://i.pravatar.cc/150?u=emp-01"
+  },
+  {
+    "id": "emp-02",
+    "name": "Marcus Webb",
+    "email": "marcus.webb@northwind.example",
+    "department": "Engineering",
+    "avatarUrl": "https://i.pravatar.cc/150?u=emp-02"
+  },
+  {
+    "id": "emp-03",
+    "name": "Priya Nair",
+    "email": "priya.nair@northwind.example",
+    "department": "Engineering",
+    "avatarUrl": "https://i.pravatar.cc/150?u=emp-03"
+  },
+  {
+    "id": "emp-04",
+    "name": "Tomas Herrera",
+    "email": "tomas.herrera@northwind.example",
+    "department": "Engineering",
+    "avatarUrl": "https://i.pravatar.cc/150?u=emp-04"
+  },
+  {
+    "id": "emp-05",
+    "name": "Sofia Rossi",
+    "email": "sofia.rossi@northwind.example",
+    "department": "Engineering"
+  },
+  {
+    "id": "emp-06",
+    "name": "Daniel Kim",
+    "email": "daniel.kim@northwind.example",
+    "department": "Engineering",
+    "avatarUrl": "https://i.pravatar.cc/150?u=emp-06"
+  },
+  {
+    "id": "emp-07",
+    "name": "Lena Fischer",
+    "email": "lena.fischer@northwind.example",
+    "department": "Design",
+    "avatarUrl": "https://i.pravatar.cc/150?u=emp-07"
+  },
+  {
+    "id": "emp-08",
+    "name": "Omar Haddad",
+    "email": "omar.haddad@northwind.example",
+    "department": "Design",
+    "avatarUrl": "https://i.pravatar.cc/150?u=emp-08"
+  },
+  {
+    "id": "emp-09",
+    "name": "Grace Park",
+    "email": "grace.park@northwind.example",
+    "department": "Design"
+  },
+  {
+    "id": "emp-10",
+    "name": "James O'Brien",
+    "email": "james.obrien@northwind.example",
+    "department": "Sales",
+    "avatarUrl": "https://i.pravatar.cc/150?u=emp-10"
+  },
+  {
+    "id": "emp-11",
+    "name": "Natalie Brooks",
+    "email": "natalie.brooks@northwind.example",
+    "department": "Sales",
+    "avatarUrl": "https://i.pravatar.cc/150?u=emp-11"
+  },
+  {
+    "id": "emp-12",
+    "name": "Victor Almeida",
+    "email": "victor.almeida@northwind.example",
+    "department": "Sales",
+    "avatarUrl": "https://i.pravatar.cc/150?u=emp-12"
+  },
+  {
+    "id": "emp-13",
+    "name": "Hannah Schmidt",
+    "email": "hannah.schmidt@northwind.example",
+    "department": "Sales"
+  },
+  {
+    "id": "emp-14",
+    "name": "Rachel Green",
+    "email": "rachel.green@northwind.example",
+    "department": "People",
+    "avatarUrl": "https://i.pravatar.cc/150?u=emp-14"
+  },
+  {
+    "id": "emp-15",
+    "name": "David Okafor",
+    "email": "david.okafor@northwind.example",
+    "department": "People",
+    "avatarUrl": "https://i.pravatar.cc/150?u=emp-15"
+  },
+  {
+    "id": "emp-16",
+    "name": "Ingrid Larsen",
+    "email": "ingrid.larsen@northwind.example",
+    "department": "Finance",
+    "avatarUrl": "https://i.pravatar.cc/150?u=emp-16"
+  },
+  {
+    "id": "emp-17",
+    "name": "Paul Mensah",
+    "email": "paul.mensah@northwind.example",
+    "department": "Finance"
+  },
+  {
+    "id": "emp-18",
+    "name": "Yuki Tanaka",
+    "email": "yuki.tanaka@northwind.example",
+    "department": "Finance",
+    "avatarUrl": "https://i.pravatar.cc/150?u=emp-18"
+  }
+]

@@ -1,0 +1,666 @@
+[
+  {
+    "roomId": "room-05",
+    "title": "All-hands",
+    "organizerId": "emp-18",
+    "attendeeIds": ["emp-07"],
+    "status": "confirmed",
+    "dayOffset": -7,
+    "startTime": "08:00",
+    "endTime": "09:30"
+  },
+  {
+    "roomId": "room-06",
+    "title": "Backlog refinement",
+    "organizerId": "emp-12",
+    "attendeeIds": ["emp-01", "emp-09", "emp-11", "emp-18"],
+    "status": "confirmed",
+    "dayOffset": -7,
+    "startTime": "11:30",
+    "endTime": "13:00"
+  },
+  {
+    "roomId": "room-04",
+    "title": "Design critique",
+    "organizerId": "emp-09",
+    "attendeeIds": [],
+    "status": "confirmed",
+    "dayOffset": -7,
+    "startTime": "12:30",
+    "endTime": "14:00",
+    "description": "Slides to be shared after."
+  },
+  {
+    "roomId": "room-02",
+    "title": "Incident postmortem",
+    "organizerId": "emp-01",
+    "attendeeIds": [],
+    "status": "cancelled",
+    "dayOffset": -7,
+    "startTime": "16:30",
+    "endTime": "17:00"
+  },
+  {
+    "roomId": "room-09",
+    "title": "Interview – Frontend",
+    "organizerId": "emp-15",
+    "attendeeIds": ["emp-10", "emp-04", "emp-01"],
+    "status": "confirmed",
+    "dayOffset": -6,
+    "startTime": "12:00",
+    "endTime": "13:30"
+  },
+  {
+    "roomId": "room-08",
+    "title": "1:1 – Engineering",
+    "organizerId": "emp-03",
+    "attendeeIds": ["emp-02", "emp-10", "emp-01", "emp-12"],
+    "status": "confirmed",
+    "dayOffset": -6,
+    "startTime": "18:00",
+    "endTime": "18:30"
+  },
+  {
+    "roomId": "room-07",
+    "title": "Onboarding session",
+    "organizerId": "emp-14",
+    "attendeeIds": ["emp-15"],
+    "status": "confirmed",
+    "dayOffset": -6,
+    "startTime": "20:00",
+    "endTime": "21:00"
+  },
+  {
+    "roomId": "room-04",
+    "title": "Client call – Acme",
+    "organizerId": "emp-04",
+    "attendeeIds": [],
+    "status": "confirmed",
+    "dayOffset": -5,
+    "startTime": "10:00",
+    "endTime": "11:00"
+  },
+  {
+    "roomId": "room-05",
+    "title": "Vendor demo",
+    "organizerId": "emp-07",
+    "attendeeIds": ["emp-15", "emp-05", "emp-10", "emp-13", "emp-14"],
+    "status": "confirmed",
+    "dayOffset": -4,
+    "startTime": "12:30",
+    "endTime": "13:30"
+  },
+  {
+    "roomId": "room-10",
+    "title": "Onboarding session",
+    "organizerId": "emp-14",
+    "attendeeIds": ["emp-10"],
+    "status": "confirmed",
+    "dayOffset": -4,
+    "startTime": "14:00",
+    "endTime": "16:00"
+  },
+  {
+    "roomId": "room-04",
+    "title": "Marketing sync",
+    "organizerId": "emp-13",
+    "attendeeIds": ["emp-10", "emp-15"],
+    "status": "confirmed",
+    "dayOffset": -3,
+    "startTime": "10:30",
+    "endTime": "12:00"
+  },
+  {
+    "roomId": "room-03",
+    "title": "All-hands",
+    "organizerId": "emp-17",
+    "attendeeIds": [],
+    "status": "confirmed",
+    "dayOffset": -3,
+    "startTime": "14:00",
+    "endTime": "14:30"
+  },
+  {
+    "roomId": "room-04",
+    "title": "Design critique",
+    "organizerId": "emp-11",
+    "attendeeIds": ["emp-05", "emp-16"],
+    "status": "confirmed",
+    "dayOffset": -3,
+    "startTime": "15:30",
+    "endTime": "16:30"
+  },
+  {
+    "roomId": "room-07",
+    "title": "Incident postmortem",
+    "organizerId": "emp-04",
+    "attendeeIds": ["emp-12"],
+    "status": "confirmed",
+    "dayOffset": -3,
+    "startTime": "20:00",
+    "endTime": "21:30"
+  },
+  {
+    "roomId": "room-04",
+    "title": "QA sync",
+    "organizerId": "emp-17",
+    "attendeeIds": ["emp-14", "emp-03"],
+    "status": "confirmed",
+    "dayOffset": -2,
+    "startTime": "09:30",
+    "endTime": "10:30"
+  },
+  {
+    "roomId": "room-05",
+    "title": "Client call – Globex",
+    "organizerId": "emp-02",
+    "attendeeIds": [],
+    "status": "confirmed",
+    "dayOffset": -2,
+    "startTime": "10:30",
+    "endTime": "12:00",
+    "description": "Agenda in the shared doc."
+  },
+  {
+    "roomId": "room-08",
+    "title": "Incident postmortem",
+    "organizerId": "emp-09",
+    "attendeeIds": [],
+    "status": "confirmed",
+    "dayOffset": -2,
+    "startTime": "14:30",
+    "endTime": "16:00",
+    "description": "Agenda in the shared doc."
+  },
+  {
+    "roomId": "room-09",
+    "title": "Security review",
+    "organizerId": "emp-16",
+    "attendeeIds": ["emp-12", "emp-16", "emp-18"],
+    "status": "confirmed",
+    "dayOffset": -1,
+    "startTime": "08:00",
+    "endTime": "09:30"
+  },
+  {
+    "roomId": "room-06",
+    "title": "QA sync",
+    "organizerId": "emp-05",
+    "attendeeIds": ["emp-04", "emp-14", "emp-15", "emp-03"],
+    "status": "confirmed",
+    "dayOffset": -1,
+    "startTime": "12:30",
+    "endTime": "13:00",
+    "description": "Agenda in the shared doc."
+  },
+  {
+    "roomId": "room-02",
+    "title": "Design critique",
+    "organizerId": "emp-16",
+    "attendeeIds": [],
+    "status": "confirmed",
+    "dayOffset": -1,
+    "startTime": "18:30",
+    "endTime": "19:00"
+  },
+  {
+    "roomId": "room-03",
+    "title": "Architecture review",
+    "organizerId": "emp-12",
+    "attendeeIds": [],
+    "status": "confirmed",
+    "dayOffset": -1,
+    "startTime": "20:00",
+    "endTime": "22:00"
+  },
+  {
+    "roomId": "room-02",
+    "title": "Onboarding session",
+    "organizerId": "emp-10",
+    "attendeeIds": ["emp-01", "emp-02", "emp-03"],
+    "status": "confirmed",
+    "dayOffset": 0,
+    "startTime": "09:00",
+    "endTime": "17:00",
+    "description": "All-day working session."
+  },
+  {
+    "roomId": "room-05",
+    "title": "Release planning",
+    "organizerId": "emp-14",
+    "attendeeIds": ["emp-05", "emp-07", "emp-17"],
+    "status": "confirmed",
+    "dayOffset": 0,
+    "startTime": "16:00",
+    "endTime": "18:00"
+  },
+  {
+    "roomId": "room-02",
+    "title": "Security review",
+    "organizerId": "emp-04",
+    "attendeeIds": [],
+    "status": "confirmed",
+    "dayOffset": 0,
+    "startTime": "17:00",
+    "endTime": "18:30",
+    "description": "Bring laptops."
+  },
+  {
+    "roomId": "room-09",
+    "title": "Security review",
+    "organizerId": "emp-13",
+    "attendeeIds": ["emp-05", "emp-04", "emp-03"],
+    "status": "confirmed",
+    "dayOffset": 0,
+    "startTime": "17:00",
+    "endTime": "18:30"
+  },
+  {
+    "roomId": "room-07",
+    "title": "Incident postmortem",
+    "organizerId": "emp-04",
+    "attendeeIds": [],
+    "status": "cancelled",
+    "dayOffset": 1,
+    "startTime": "10:00",
+    "endTime": "12:00",
+    "description": "Slides to be shared after."
+  },
+  {
+    "roomId": "room-09",
+    "title": "Roadmap sync",
+    "organizerId": "emp-07",
+    "attendeeIds": ["emp-12"],
+    "status": "confirmed",
+    "dayOffset": 1,
+    "startTime": "14:00",
+    "endTime": "15:00"
+  },
+  {
+    "roomId": "room-08",
+    "title": "QA sync",
+    "organizerId": "emp-01",
+    "attendeeIds": ["emp-01", "emp-02", "emp-18", "emp-10", "emp-04"],
+    "status": "confirmed",
+    "dayOffset": 1,
+    "startTime": "16:30",
+    "endTime": "18:00"
+  },
+  {
+    "roomId": "room-03",
+    "title": "Sprint planning",
+    "organizerId": "emp-09",
+    "attendeeIds": ["emp-04", "emp-16"],
+    "status": "confirmed",
+    "dayOffset": 3,
+    "startTime": "10:30",
+    "endTime": "12:00"
+  },
+  {
+    "roomId": "room-01",
+    "title": "Incident postmortem",
+    "organizerId": "emp-16",
+    "attendeeIds": [],
+    "status": "confirmed",
+    "dayOffset": 4,
+    "startTime": "11:00",
+    "endTime": "11:30"
+  },
+  {
+    "roomId": "room-09",
+    "title": "Design critique",
+    "organizerId": "emp-13",
+    "attendeeIds": ["emp-12", "emp-11", "emp-15", "emp-18"],
+    "status": "confirmed",
+    "dayOffset": 4,
+    "startTime": "11:00",
+    "endTime": "12:30",
+    "description": "Remote attendees on the call link."
+  },
+  {
+    "roomId": "room-06",
+    "title": "Architecture review",
+    "organizerId": "emp-14",
+    "attendeeIds": ["emp-05"],
+    "status": "confirmed",
+    "dayOffset": 4,
+    "startTime": "17:00",
+    "endTime": "18:30",
+    "description": "Follow-up from last week."
+  },
+  {
+    "roomId": "room-02",
+    "title": "Product review",
+    "organizerId": "emp-11",
+    "attendeeIds": [],
+    "status": "confirmed",
+    "dayOffset": 4,
+    "startTime": "19:30",
+    "endTime": "21:30"
+  },
+  {
+    "roomId": "room-09",
+    "title": "Lunch & learn",
+    "organizerId": "emp-06",
+    "attendeeIds": ["emp-03", "emp-02", "emp-12", "emp-18", "emp-16", "emp-15"],
+    "status": "confirmed",
+    "dayOffset": 5,
+    "startTime": "10:30",
+    "endTime": "11:30"
+  },
+  {
+    "roomId": "room-08",
+    "title": "Daily standup",
+    "organizerId": "emp-13",
+    "attendeeIds": ["emp-13", "emp-14", "emp-04", "emp-08", "emp-09"],
+    "status": "confirmed",
+    "dayOffset": 5,
+    "startTime": "12:30",
+    "endTime": "14:00"
+  },
+  {
+    "roomId": "room-06",
+    "title": "Sprint planning",
+    "organizerId": "emp-17",
+    "attendeeIds": ["emp-09", "emp-02", "emp-01", "emp-10", "emp-14", "emp-06"],
+    "status": "confirmed",
+    "dayOffset": 5,
+    "startTime": "16:30",
+    "endTime": "18:30"
+  },
+  {
+    "roomId": "room-04",
+    "title": "1:1 – Design",
+    "organizerId": "emp-15",
+    "attendeeIds": [],
+    "status": "confirmed",
+    "dayOffset": 6,
+    "startTime": "08:00",
+    "endTime": "09:30"
+  },
+  {
+    "roomId": "room-06",
+    "title": "QA sync",
+    "organizerId": "emp-01",
+    "attendeeIds": [],
+    "status": "confirmed",
+    "dayOffset": 6,
+    "startTime": "09:30",
+    "endTime": "11:00"
+  },
+  {
+    "roomId": "room-10",
+    "title": "Interview – Backend",
+    "organizerId": "emp-05",
+    "attendeeIds": [],
+    "status": "confirmed",
+    "dayOffset": 6,
+    "startTime": "13:30",
+    "endTime": "15:00"
+  },
+  {
+    "roomId": "room-02",
+    "title": "QA sync",
+    "organizerId": "emp-05",
+    "attendeeIds": [],
+    "status": "confirmed",
+    "dayOffset": 6,
+    "startTime": "18:30",
+    "endTime": "19:30"
+  },
+  {
+    "roomId": "room-09",
+    "title": "Sales pipeline review",
+    "organizerId": "emp-16",
+    "attendeeIds": ["emp-14", "emp-01", "emp-09", "emp-08", "emp-03"],
+    "status": "confirmed",
+    "dayOffset": 6,
+    "startTime": "18:30",
+    "endTime": "20:30",
+    "description": "Bring laptops."
+  },
+  {
+    "roomId": "room-03",
+    "title": "Incident postmortem",
+    "organizerId": "emp-13",
+    "attendeeIds": ["emp-16", "emp-06"],
+    "status": "confirmed",
+    "dayOffset": 7,
+    "startTime": "11:00",
+    "endTime": "13:00"
+  },
+  {
+    "roomId": "room-06",
+    "title": "Incident postmortem",
+    "organizerId": "emp-10",
+    "attendeeIds": ["emp-13"],
+    "status": "confirmed",
+    "dayOffset": 7,
+    "startTime": "14:30",
+    "endTime": "16:00",
+    "description": "Decisions needed by EOD."
+  },
+  {
+    "roomId": "room-09",
+    "title": "Backlog refinement",
+    "organizerId": "emp-05",
+    "attendeeIds": ["emp-10", "emp-06", "emp-08", "emp-01", "emp-15"],
+    "status": "confirmed",
+    "dayOffset": 7,
+    "startTime": "17:00",
+    "endTime": "18:00"
+  },
+  {
+    "roomId": "room-07",
+    "title": "Marketing sync",
+    "organizerId": "emp-05",
+    "attendeeIds": ["emp-04", "emp-03", "emp-12"],
+    "status": "confirmed",
+    "dayOffset": 7,
+    "startTime": "19:30",
+    "endTime": "20:30"
+  },
+  {
+    "roomId": "room-09",
+    "title": "Client call – Globex",
+    "organizerId": "emp-09",
+    "attendeeIds": ["emp-06", "emp-02", "emp-05", "emp-08", "emp-12"],
+    "status": "confirmed",
+    "dayOffset": 8,
+    "startTime": "08:00",
+    "endTime": "09:30"
+  },
+  {
+    "roomId": "room-10",
+    "title": "Sales pipeline review",
+    "organizerId": "emp-18",
+    "attendeeIds": ["emp-03", "emp-02", "emp-01", "emp-13"],
+    "status": "confirmed",
+    "dayOffset": 8,
+    "startTime": "11:00",
+    "endTime": "12:00"
+  },
+  {
+    "roomId": "room-02",
+    "title": "Backlog refinement",
+    "organizerId": "emp-10",
+    "attendeeIds": [],
+    "status": "confirmed",
+    "dayOffset": 8,
+    "startTime": "18:30",
+    "endTime": "19:30"
+  },
+  {
+    "roomId": "room-08",
+    "title": "Incident postmortem",
+    "organizerId": "emp-01",
+    "attendeeIds": ["emp-01", "emp-16", "emp-06", "emp-07", "emp-10", "emp-02"],
+    "status": "confirmed",
+    "dayOffset": 8,
+    "startTime": "19:30",
+    "endTime": "20:30"
+  },
+  {
+    "roomId": "room-04",
+    "title": "Onboarding session",
+    "organizerId": "emp-05",
+    "attendeeIds": [],
+    "status": "confirmed",
+    "dayOffset": 10,
+    "startTime": "12:00",
+    "endTime": "13:00"
+  },
+  {
+    "roomId": "room-09",
+    "title": "Release planning",
+    "organizerId": "emp-06",
+    "attendeeIds": ["emp-10", "emp-15"],
+    "status": "confirmed",
+    "dayOffset": 11,
+    "startTime": "10:00",
+    "endTime": "11:30"
+  },
+  {
+    "roomId": "room-04",
+    "title": "Interview – Backend",
+    "organizerId": "emp-18",
+    "attendeeIds": ["emp-13", "emp-12"],
+    "status": "confirmed",
+    "dayOffset": 11,
+    "startTime": "11:00",
+    "endTime": "12:00"
+  },
+  {
+    "roomId": "room-06",
+    "title": "Client call – Acme",
+    "organizerId": "emp-07",
+    "attendeeIds": [],
+    "status": "confirmed",
+    "dayOffset": 11,
+    "startTime": "15:00",
+    "endTime": "15:30",
+    "description": "Bring laptops."
+  },
+  {
+    "roomId": "room-01",
+    "title": "All-hands",
+    "organizerId": "emp-03",
+    "attendeeIds": [],
+    "status": "confirmed",
+    "dayOffset": 11,
+    "startTime": "19:00",
+    "endTime": "20:30"
+  },
+  {
+    "roomId": "room-02",
+    "title": "Architecture review",
+    "organizerId": "emp-17",
+    "attendeeIds": [],
+    "status": "confirmed",
+    "dayOffset": 12,
+    "startTime": "10:30",
+    "endTime": "11:30"
+  },
+  {
+    "roomId": "room-04",
+    "title": "Lunch & learn",
+    "organizerId": "emp-18",
+    "attendeeIds": ["emp-08", "emp-09"],
+    "status": "confirmed",
+    "dayOffset": 12,
+    "startTime": "12:30",
+    "endTime": "13:30"
+  },
+  {
+    "roomId": "room-06",
+    "title": "Budget review",
+    "organizerId": "emp-01",
+    "attendeeIds": ["emp-07", "emp-12", "emp-06", "emp-17", "emp-03", "emp-16"],
+    "status": "cancelled",
+    "dayOffset": 12,
+    "startTime": "19:30",
+    "endTime": "20:30"
+  },
+  {
+    "roomId": "room-04",
+    "title": "Client call – Acme",
+    "organizerId": "emp-08",
+    "attendeeIds": ["emp-05", "emp-06"],
+    "status": "confirmed",
+    "dayOffset": 13,
+    "startTime": "14:30",
+    "endTime": "15:30"
+  },
+  {
+    "roomId": "room-09",
+    "title": "Backlog refinement",
+    "organizerId": "emp-18",
+    "attendeeIds": ["emp-01", "emp-02"],
+    "status": "confirmed",
+    "dayOffset": 13,
+    "startTime": "15:30",
+    "endTime": "17:00"
+  },
+  {
+    "roomId": "room-04",
+    "title": "Interview – Frontend",
+    "organizerId": "emp-14",
+    "attendeeIds": ["emp-07", "emp-01", "emp-13"],
+    "status": "confirmed",
+    "dayOffset": 13,
+    "startTime": "19:00",
+    "endTime": "20:00"
+  },
+  {
+    "roomId": "room-02",
+    "title": "Lunch & learn",
+    "organizerId": "emp-17",
+    "attendeeIds": [],
+    "status": "confirmed",
+    "dayOffset": 13,
+    "startTime": "22:00",
+    "endTime": "24:00",
+    "description": "Agenda in the shared doc."
+  },
+  {
+    "roomId": "room-06",
+    "title": "Marketing sync",
+    "organizerId": "emp-08",
+    "attendeeIds": ["emp-12", "emp-04", "emp-06"],
+    "status": "confirmed",
+    "dayOffset": 14,
+    "startTime": "09:30",
+    "endTime": "11:00"
+  },
+  {
+    "roomId": "room-05",
+    "title": "Security review",
+    "organizerId": "emp-03",
+    "attendeeIds": ["emp-11", "emp-01"],
+    "status": "confirmed",
+    "dayOffset": 14,
+    "startTime": "12:00",
+    "endTime": "13:30"
+  },
+  {
+    "roomId": "room-01",
+    "title": "Interview – Backend",
+    "organizerId": "emp-11",
+    "attendeeIds": [],
+    "status": "confirmed",
+    "dayOffset": 14,
+    "startTime": "16:00",
+    "endTime": "17:30"
+  },
+  {
+    "roomId": "room-08",
+    "title": "Sales pipeline review",
+    "organizerId": "emp-06",
+    "attendeeIds": ["emp-15"],
+    "status": "confirmed",
+    "dayOffset": 14,
+    "startTime": "16:00",
+    "endTime": "17:00",
+    "description": "Decisions needed by EOD."
+  }
+]

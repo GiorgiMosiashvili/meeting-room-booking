@@ -1,0 +1,98 @@
+[
+  {
+    "id": "room-01",
+    "name": "Phone Booth — Cedar",
+    "floor": 1,
+    "capacity": 1,
+    "amenities": ["phone"],
+    "isActive": true
+  },
+  {
+    "id": "room-02",
+    "name": "Phone Booth — Birch",
+    "floor": 1,
+    "capacity": 1,
+    "amenities": ["phone"],
+    "isActive": true
+  },
+  {
+    "id": "room-03",
+    "name": "Huddle — The Nook",
+    "floor": 1,
+    "capacity": 3,
+    "amenities": ["whiteboard", "video-conf"],
+    "photoUrl": "https://picsum.photos/seed/room-03/800/600",
+    "isActive": true
+  },
+  {
+    "id": "room-04",
+    "name": "Focus Room — Aspen",
+    "floor": 1,
+    "capacity": 4,
+    "amenities": ["whiteboard"],
+    "photoUrl": "https://picsum.photos/seed/room-04/800/600",
+    "isActive": true
+  },
+  {
+    "id": "room-05",
+    "name": "Brainstorm — Maple",
+    "floor": 2,
+    "capacity": 6,
+    "amenities": ["whiteboard", "projector", "video-conf"],
+    "photoUrl": "https://picsum.photos/seed/room-05/800/600",
+    "isActive": true
+  },
+  {
+    "id": "room-06",
+    "name": "Collaborate — Willow",
+    "floor": 2,
+    "capacity": 8,
+    "amenities": ["projector", "video-conf"],
+    "photoUrl": "https://picsum.photos/seed/room-06/800/600",
+    "isActive": true
+  },
+  {
+    "id": "room-07",
+    "name": "Boardroom — Summit",
+    "floor": 2,
+    "capacity": 14,
+    "amenities": ["projector", "video-conf", "whiteboard", "phone"],
+    "photoUrl": "https://picsum.photos/seed/room-07/800/600",
+    "isActive": true
+  },
+  {
+    "id": "room-08",
+    "name": "Training Room — Academy",
+    "floor": 2,
+    "capacity": 20,
+    "amenities": ["projector", "whiteboard", "video-conf"],
+    "photoUrl": "https://picsum.photos/seed/room-08/800/600",
+    "isActive": true
+  },
+  {
+    "id": "room-09",
+    "name": "Meeting Room — Skyline",
+    "floor": 3,
+    "capacity": 10,
+    "amenities": ["projector", "video-conf", "whiteboard"],
+    "photoUrl": "https://picsum.photos/seed/room-09/800/600",
+    "isActive": true
+  },
+  {
+    "id": "room-10",
+    "name": "Lounge — Rooftop",
+    "floor": 3,
+    "capacity": 16,
+    "amenities": ["video-conf", "whiteboard"],
+    "photoUrl": "https://picsum.photos/seed/room-10/800/600",
+    "isActive": true
+  },
+  {
+    "id": "room-11",
+    "name": "Boardroom — Heritage (under renovation)",
+    "floor": 3,
+    "capacity": 12,
+    "amenities": ["projector", "phone"],
+    "isActive": false
+  }
+]

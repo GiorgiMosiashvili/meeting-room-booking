@@ -12,5 +12,8 @@ export default defineConfig({
     globals: true,
     setupFiles: ["./vitest.setup.ts"],
     include: ["src/**/*.{test,spec}.{ts,tsx}"],
+    // The default "forks" pool times out spawning workers on this machine's
+    // slow project drive; "threads" avoids the child-process overhead.
+    pool: "threads",
   },
 });

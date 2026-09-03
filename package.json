@@ -10,7 +10,8 @@
     "format": "prettier --write .",
     "format:check": "prettier --check .",
     "test": "vitest",
-    "test:run": "vitest run"
+    "test:run": "vitest run",
+    "seed": "node scripts/generate-seed.mjs"
   },
   "engines": {
     "node": ">=22.13.0"
