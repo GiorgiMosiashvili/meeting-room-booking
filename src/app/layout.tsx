@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import type { ReactNode } from "react";
 import { Geist } from "next/font/google";
 import "./globals.css";
 import Providers from "@/components/providers";
@@ -17,12 +18,19 @@ export const metadata: Metadata = {
   description: "Internal meeting room booking system",
 };
 
-export default function RootLayout({ children }: LayoutProps<"/">) {
+export default function RootLayout({
+  children,
+  modal,
+}: {
+  children: ReactNode;
+  modal: ReactNode;
+}) {
   return (
     <html lang="en" className={geistSans.variable}>
       <body>
         <Providers>
           <AppShell>{children}</AppShell>
+          {modal}
         </Providers>
       </body>
     </html>

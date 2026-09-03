@@ -109,6 +109,32 @@ export const Select = styled.select`
   font-size: 0.9rem;
 `;
 
+export const Textarea = styled.textarea`
+  width: 100%;
+  min-height: 80px;
+  padding: ${({ theme }) => theme.space(2)} ${({ theme }) => theme.space(3)};
+  border: 1px solid ${({ theme }) => theme.color.border};
+  border-radius: ${({ theme }) => theme.radius.sm};
+  background: ${({ theme }) => theme.color.surface};
+  font-size: 0.9rem;
+  resize: vertical;
+`;
+
+// ვალიდაციის შეცდომების სია (ფორმის ან API-ს).
+export const ErrorList = styled.ul`
+  list-style: none;
+  margin: ${({ theme }) => theme.space(2)} 0;
+  padding: ${({ theme }) => theme.space(2)} ${({ theme }) => theme.space(3)};
+  background: ${({ theme }) => theme.color.dangerSoft};
+  border-radius: ${({ theme }) => theme.radius.sm};
+  color: ${({ theme }) => theme.color.danger};
+  font-size: 0.85rem;
+
+  li + li {
+    margin-top: ${({ theme }) => theme.space(1)};
+  }
+`;
+
 // ველი ლეიბლით.
 export const Field = styled.label`
   display: flex;
