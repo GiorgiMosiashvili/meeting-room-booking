@@ -78,7 +78,7 @@ export function describeConflict(b: Booking): string {
   return `This room is already booked from ${from} to ${to} ("${b.title}").`;
 }
 
-// ძირითადი წესები 
+// ძირითადი წესები
 
 // ეძებს იმავე ოთახის გადამფარავ ჯავშანს (გაუქმებულს და ignoreId-ს ტოვებს).
 export function findConflict(

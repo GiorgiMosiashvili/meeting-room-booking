@@ -4,17 +4,21 @@ import React, { useState } from "react";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { NuqsAdapter } from "nuqs/adapters/next/app";
 import { Toaster } from "sonner";
+import { ThemeProvider } from "styled-components";
 import StyledComponentsRegistry from "@/lib/registry";
+import { theme } from "@/styles/theme";
+import { GlobalStyle } from "@/styles/global-style";
 
 /**
- * Client-side app shell providers, mounted once in the root layout:
- * - StyledComponentsRegistry: SSR style flushing for styled-components
- * - QueryClientProvider: server-state cache (TanStack Query)
- * - NuqsAdapter: lets nuqs read/write URL search params under the App Router
- * - Toaster: mutation success/error notifications (sonner)
+ * კლიენტის მხარის provider-ები, root layout-ში ერთხელ ჩამონტაჟებული:
+ * - StyledComponentsRegistry: styled-components-ის SSR
+ * - ThemeProvider + GlobalStyle: დიზაინის ტოკენები
+ * - QueryClientProvider: server-state ქეში (TanStack Query)
+ * - NuqsAdapter: nuqs-ს URL search params-თან წვდომას აძლევს
+ * - Toaster: მუტაციების შეტყობინებები (sonner)
  */
 export default function Providers({ children }: { children: React.ReactNode }) {
-  // One QueryClient per browser session; lazy init keeps it stable across renders.
+  // ერთი QueryClient სესიაზე; lazy init ინარჩუნებს მას რენდერებს შორის.
   const [queryClient] = useState(
     () =>
       new QueryClient({
@@ -30,10 +34,13 @@ export default function Providers({ children }: { children: React.ReactNode }) {
 
   return (
     <StyledComponentsRegistry>
-      <QueryClientProvider client={queryClient}>
-        <NuqsAdapter>{children}</NuqsAdapter>
-        <Toaster richColors position="top-right" />
-      </QueryClientProvider>
+      <ThemeProvider theme={theme}>
+        <GlobalStyle />
+        <QueryClientProvider client={queryClient}>
+          <NuqsAdapter>{children}</NuqsAdapter>
+          <Toaster richColors position="top-right" />
+        </QueryClientProvider>
+      </ThemeProvider>
     </StyledComponentsRegistry>
   );
 }

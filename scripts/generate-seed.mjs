@@ -25,14 +25,14 @@ const pick = (arr) => arr[Math.floor(rand() * arr.length)];
 const chance = (p) => rand() < p;
 const int = (min, max) => min + Math.floor(rand() * (max - min + 1));
 
-// საწყისი მონაცემები 
+// საწყისი მონაცემები
 const rooms = JSON.parse(readFileSync(join(dataDir, "rooms.json"), "utf8"));
 const employees = JSON.parse(
   readFileSync(join(dataDir, "employees.json"), "utf8"),
 );
 const activeRooms = rooms.filter((r) => r.isActive);
 
-// ფიქსირებული საწყისი დღე (ხუთშაბათი) შაბათ-კვირის დათვლა 
+// ფიქსირებული საწყისი დღე (ხუთშაბათი) შაბათ-კვირის დათვლა
 const ANCHOR_DOW = 4;
 const isWeekend = (dayOffset) => {
   const dow = (((ANCHOR_DOW + dayOffset) % 7) + 7) % 7;
@@ -88,7 +88,7 @@ function bookingsForRoomDay(room, dayOffset, busyness) {
   for (let i = 0; i < count; i++) {
     // შუაღამემდე მიმავალი ჯავშანი (24:00 წესის შესამოწმებლად)
     const lateNight = chance(0.04);
-    const startMin = lateNight ? 22 * 60 : int(16, 40) * 30; // 08:00–20:00 
+    const startMin = lateNight ? 22 * 60 : int(16, 40) * 30; // 08:00–20:00
     const durMin = lateNight ? 120 : pick([30, 60, 60, 90, 120, 90]);
     const endMin = startMin + durMin;
     if (endMin > 24 * 60) continue;
@@ -117,7 +117,7 @@ function bookingsForRoomDay(room, dayOffset, busyness) {
   return out;
 }
 
-// გენერაცია 
+// გენერაცია
 const busynessByRoom = new Map(
   activeRooms.map((r) => [r.id, 0.2 + rand() * 0.7]),
 );
