@@ -88,7 +88,11 @@ export default function ScheduleView() {
       <PageHeader>
         <div>
           <h1>Schedule</h1>
-          <p>Day and week views of room availability.</p>
+          <p>
+            {view === "day"
+              ? "Rooms across the day. Click an empty slot to book it."
+              : "One room across the week. Click an empty slot to book it."}
+          </p>
         </div>
       </PageHeader>
 

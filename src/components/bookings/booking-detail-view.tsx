@@ -1,9 +1,8 @@
 "use client";
 
-// ჯავშნის დეტალი, იყენებს გვერდიც და მოდალიც.
+// ჯავშნის დეტალის ხედი (სრული გვერდი).
 import { useState } from "react";
 import Link from "next/link";
-import { useRouter } from "next/navigation";
 import styled from "styled-components";
 import { isBookingEditable } from "@/lib/booking-rules";
 import { formatDay, formatTime } from "@/lib/datetime";
@@ -15,10 +14,6 @@ import StatusBadge from "./status-badge";
 import ConfirmDialog from "@/components/confirm-dialog";
 
 const Head = styled.div`
-  display: flex;
-  align-items: flex-start;
-  justify-content: space-between;
-  gap: ${({ theme }) => theme.space(3)};
   margin-bottom: ${({ theme }) => theme.space(4)};
 
   h2 {
@@ -50,12 +45,9 @@ const Actions = styled.div`
 
 export default function BookingDetailView({
   bookingId,
-  onClose,
 }: {
   bookingId: string;
-  onClose?: () => void;
 }) {
-  const router = useRouter();
   const booking = useBooking(bookingId);
   const cancel = useCancelBooking();
   const [confirming, setConfirming] = useState(false);
@@ -82,17 +74,10 @@ export default function BookingDetailView({
   return (
     <div>
       <Head>
-        <div>
-          <h2>{b.title}</h2>
-          <div style={{ marginTop: 6 }}>
-            <StatusBadge booking={b} />
-          </div>
+        <h2>{b.title}</h2>
+        <div style={{ marginTop: 6 }}>
+          <StatusBadge booking={b} />
         </div>
-        {onClose && (
-          <Button $variant="ghost" onClick={onClose} aria-label="Close">
-            ✕
-          </Button>
-        )}
       </Head>
 
       <Dl>
@@ -147,12 +132,7 @@ export default function BookingDetailView({
           pending={cancel.isPending}
           onCancel={() => setConfirming(false)}
           onConfirm={() =>
-            cancel.mutate(b.id, {
-              onSuccess: () => {
-                setConfirming(false);
-                if (onClose) router.back();
-              },
-            })
+            cancel.mutate(b.id, { onSuccess: () => setConfirming(false) })
           }
         />
       )}

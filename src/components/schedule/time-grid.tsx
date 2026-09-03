@@ -1,6 +1,7 @@
 "use client";
 
-// ხელით აწყობილი დროის ბადე: მარცხნივ საათები, სვეტებში ჯავშნები ბლოკებად.
+// ხელით აწყობილი დროის ბადე. სათაურები და საათების სვეტი "წებოვანია" (sticky),
+// ბადე გადააგორავებს კონტეინერში, გვერდი კი ადგილზე რჩება.
 // ცარიელ უჯრაზე დაჭერა → ახალი ჯავშანი; ბლოკზე დაჭერა → დეტალი.
 import { isSameDay, parseISO } from "date-fns";
 import styled from "styled-components";
@@ -8,8 +9,10 @@ import type { Booking } from "@/types/booking";
 import { BUSINESS_END_MIN, BUSINESS_START_MIN } from "@/lib/booking-rules";
 import { formatTime } from "@/lib/datetime";
 
-const SLOT_PX = 28; // 30 წუთი
+const SLOT_PX = 20; // 30 წუთი
 const SLOT_MIN = 30;
+const GUTTER = 52;
+const COL_MIN = 108;
 const SLOT_COUNT = (BUSINESS_END_MIN - BUSINESS_START_MIN) / SLOT_MIN; // 32
 const TOTAL_H = SLOT_COUNT * SLOT_PX;
 
@@ -22,56 +25,78 @@ export interface GridColumn {
 }
 
 const Scroll = styled.div`
-  overflow-x: auto;
+  overflow: auto;
+  max-height: calc(100vh - 240px);
+  min-height: 360px;
   border: 1px solid ${({ theme }) => theme.color.border};
   border-radius: ${({ theme }) => theme.radius.md};
   background: ${({ theme }) => theme.color.surface};
 `;
 
-const Table = styled.div<{ $cols: number }>`
+const Grid = styled.div<{ $cols: number }>`
   display: grid;
-  grid-template-columns: 56px repeat(
+  grid-template-columns: ${GUTTER}px repeat(
       ${({ $cols }) => $cols},
-      minmax(130px, 1fr)
+      minmax(${COL_MIN}px, 1fr)
     );
-  min-width: ${({ $cols }) => 56 + $cols * 130}px;
+  grid-template-rows: auto ${TOTAL_H}px;
+  min-width: ${({ $cols }) => GUTTER + $cols * COL_MIN}px;
 `;
 
 const Corner = styled.div`
+  position: sticky;
+  top: 0;
+  left: 0;
+  z-index: 4;
+  background: ${({ theme }) => theme.color.surface};
   border-bottom: 1px solid ${({ theme }) => theme.color.border};
 `;
 
 const ColHead = styled.div`
-  padding: ${({ theme }) => theme.space(2)};
+  position: sticky;
+  top: 0;
+  z-index: 3;
+  background: ${({ theme }) => theme.color.surface};
+  padding: ${({ theme }) => theme.space(2)} 6px;
   text-align: center;
-  font-size: 0.8rem;
+  font-size: 0.78rem;
   font-weight: 600;
+  line-height: 1.2;
   border-bottom: 1px solid ${({ theme }) => theme.color.border};
   border-left: 1px solid ${({ theme }) => theme.color.border};
 
+  span {
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
   small {
     display: block;
     font-weight: 400;
+    font-size: 0.68rem;
     color: ${({ theme }) => theme.color.textMuted};
   }
 `;
 
 const Gutter = styled.div`
-  position: relative;
-  height: ${TOTAL_H}px;
+  position: sticky;
+  left: 0;
+  z-index: 2;
+  background: ${({ theme }) => theme.color.surface};
+  border-right: 1px solid ${({ theme }) => theme.color.border};
 `;
 
 const HourLabel = styled.div`
   position: absolute;
   right: 6px;
-  font-size: 0.7rem;
+  font-size: 0.68rem;
   color: ${({ theme }) => theme.color.textMuted};
   transform: translateY(-50%);
 `;
 
 const Col = styled.div`
   position: relative;
-  height: ${TOTAL_H}px;
   border-left: 1px solid ${({ theme }) => theme.color.border};
 `;
 
@@ -99,12 +124,13 @@ const Block = styled.button`
   background: ${({ theme }) => theme.color.primarySoft};
   color: ${({ theme }) => theme.color.text};
   border-radius: ${({ theme }) => theme.radius.sm};
-  padding: 2px 6px;
-  font-size: 0.72rem;
-  line-height: 1.25;
+  padding: 2px 5px;
+  font-size: 0.7rem;
+  line-height: 1.2;
   text-align: left;
   cursor: pointer;
   overflow: hidden;
+  z-index: 1;
 
   strong {
     display: block;
@@ -148,11 +174,11 @@ export default function TimeGrid({
 
   return (
     <Scroll>
-      <Table $cols={columns.length}>
+      <Grid $cols={columns.length}>
         <Corner />
         {columns.map((c) => (
           <ColHead key={c.key}>
-            {c.label}
+            <span>{c.label}</span>
             {c.sublabel && <small>{c.sublabel}</small>}
           </ColHead>
         ))}
@@ -180,7 +206,7 @@ export default function TimeGrid({
                 <Slot
                   key={i}
                   style={{ top: i * SLOT_PX }}
-                  aria-label={`New booking at ${hhmm(i)}`}
+                  aria-label={`Book ${c.label} at ${hhmm(i)}`}
                   onClick={() => onEmptySlot(c.roomId, c.date, hhmm(i))}
                 />
               ))}
@@ -202,6 +228,7 @@ export default function TimeGrid({
                     key={b.id}
                     style={{ top, height }}
                     onClick={() => onBooking(b.id)}
+                    title={`${b.title} · ${formatTime(b.start)}–${formatTime(b.end)}`}
                   >
                     <strong>{b.title}</strong>
                     {formatTime(b.start)}–{formatTime(b.end)}
@@ -211,7 +238,7 @@ export default function TimeGrid({
             </Col>
           );
         })}
-      </Table>
+      </Grid>
     </Scroll>
   );
 }
