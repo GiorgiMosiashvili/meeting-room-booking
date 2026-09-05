@@ -16,7 +16,7 @@ The stack:
 
     Next.js 16 (App Router) for the frontend, routing, and server/client boundaries
     TanStack Query for server-state caching, loading/error states, and cache invalidation after mutations
-    nuqs for typed URL search-param state — every filter and the schedule view/date live in the URL
+    nuqs for typed URL search-param state — chosen over plain React state because a filtered Rooms/Bookings view or a specific Schedule day needs to be a shareable, refresh-safe link, not state that resets on reload; every filter and the schedule view/date live in the URL
     styled-components for styling, with an SSR style registry
     React Hook Form + Zod for the booking form and its validation
     date-fns for overlap maths, week boundaries, and formatting
@@ -38,7 +38,8 @@ Repository: _add your GitHub URL_
     npm run lint
     npm run seed       # regenerate src/data/bookings.json
 
-Node >= 22.13 (`.nvmrc` pins 22).
+Node >= 22.13 (`.nvmrc` pins 22). Package manager is **npm** — the repo ships a
+`package-lock.json`; using yarn or pnpm instead will fight that lockfile.
 
 ## UI & Styling
 
@@ -69,13 +70,16 @@ Node >= 22.13 (`.nvmrc` pins 22).
 
     A hand-built CSS-grid time grid (no calendar library). Day view puts rooms in columns; week view puts the seven days in columns for one selected room.
     Column headers and the hour column are sticky, and the grid scrolls inside a viewport-capped container, so the page itself never moves.
-    Click an empty slot to start a booking prefilled with that room and time; click a booking block to open its detail. A red line marks the current time. Prev/next and "Today" navigate; the view and date are in the URL.
+    Click an empty slot to start a booking prefilled with that room and time; click a booking block to open its detail. The current time is marked with a red line and label. Prev/next, "Today", and a direct date picker all navigate; the view and date are in the URL. A note appears when a view has no bookings at all, so an empty grid reads as "nothing scheduled," not "broken."
 
 ### Bookings
 
     Full CRUD: create, view, edit (upcoming only), and cancel (which sets status to cancelled and keeps the record).
     Validation is a set of pure functions in src/lib/booking-rules.ts — overlap detection, business-hours / grid / duration checks, and the editable-window rule — shared by the form and the fake API.
     The create/edit form runs those rules live as you type and explains exactly why a slot is invalid before you can submit; the API re-checks and is the backstop, with toasts on failure.
+    The Room filter is a custom dropdown (not a native <select>, which can't render styled text inside its options) that shows each room's booking counts for the current date range, colour-coded — green confirmed, gold past, red cancelled — via src/lib/booking-status.ts.
+    The bookings list's STATUS column header doubles as a sort control: pick a status to bring matching rows to the top, independent of the Status filter (which removes non-matching rows instead).
+    Filter and search changes keep the previous results on screen while the new query loads (TanStack Query's keepPreviousData) with a small "Updating…" indicator, instead of flashing the whole list to a skeleton on every keystroke.
 
 ### Dashboard
 
@@ -127,19 +131,30 @@ Node >= 22.13 (`.nvmrc` pins 22).
     Duration 15 minutes to 8 hours (the 15-minute minimum is a separate check from the 30-minute grid so the grid can be relaxed later).
     A room cannot have two overlapping non-cancelled bookings.
     "Upcoming" means the start is in the future; only bookings that have not started can be edited or cancelled.
-    Source-code comments are written in Georgian (author preference).
+    Source-code comments are written in Georgian (author preference). This is comments only — every identifier, type, function/variable name, string, and commit message is in English, so the code's structure and behavior are readable without translation; only the inline "why" notes need it.
     FAILURE_RATE in src/lib/api/client.ts is 0 for the deploy — raise it to exercise the error UI.
 
 ## Known Issues / With More Time
 
-    No dark theme (light only).
+**Would add next** — things cut for time, not by design:
+
     The week view shows one room at a time; a room-by-day availability overview would be a good addition.
-    Re-add the booking-detail modal under /bookings/view/[id].
+    Re-add the booking-detail modal under /bookings/view/[id] now that the /bookings/new collision is understood.
     More component-level tests (render a list, apply a filter, assert the rows change); current tests cover the pure rules and the API/persistence layer.
     Drag-to-create on the calendar.
+
+**Deliberately deferred** — scoping decisions, not gaps:
+
+    Dark theme. One light palette was enough to prove the token-based theming approach works; a second palette is additive, not a design risk, so it wasn't worth the time against the features above.
 
 ## Tests
 
     src/lib/booking-validation.test.ts — the overlap and time-rule functions (touching edges, containment, cancelled ignored, the midnight case, off-grid, past, duration bounds).
     src/lib/api/bookings.test.ts — integration through api -> db -> localStorage: create persists, overlap is rejected as CONFLICT, past is rejected as VALIDATION, cancel keeps the record, edit-after-start is refused, list filters work.
     src/lib/dashboard.test.ts — the dashboard aggregation helpers.
+
+The data-layer acceptance check (`.json` imports and `localStorage` used only inside
+`src/data/`) holds for `src/app` and `src/components` — the only place outside
+`src/data/` that touches `localStorage` is `bookings.test.ts` itself, which seeds it
+directly to get a controlled fixture instead of going through `db.ts`'s own
+JSON-seeding path. That's deliberate test setup, not a leak in the UI.
