@@ -1,7 +1,7 @@
 [
   {
     "id": "room-01",
-    "name": "Phone Booth — Cedar",
+    "name": "Phone Booth - Cedar",
     "floor": 1,
     "capacity": 1,
     "amenities": ["phone"],
@@ -9,7 +9,7 @@
   },
   {
     "id": "room-02",
-    "name": "Phone Booth — Birch",
+    "name": "Phone Booth - Birch",
     "floor": 1,
     "capacity": 1,
     "amenities": ["phone"],
@@ -17,7 +17,7 @@
   },
   {
     "id": "room-03",
-    "name": "Huddle — The Nook",
+    "name": "Huddle - The Nook",
     "floor": 1,
     "capacity": 3,
     "amenities": ["whiteboard", "video-conf"],
@@ -26,7 +26,7 @@
   },
   {
     "id": "room-04",
-    "name": "Focus Room — Aspen",
+    "name": "Focus Room - Aspen",
     "floor": 1,
     "capacity": 4,
     "amenities": ["whiteboard"],
@@ -35,7 +35,7 @@
   },
   {
     "id": "room-05",
-    "name": "Brainstorm — Maple",
+    "name": "Brainstorm - Maple",
     "floor": 2,
     "capacity": 6,
     "amenities": ["whiteboard", "projector", "video-conf"],
@@ -44,7 +44,7 @@
   },
   {
     "id": "room-06",
-    "name": "Collaborate — Willow",
+    "name": "Collaborate - Willow",
     "floor": 2,
     "capacity": 8,
     "amenities": ["projector", "video-conf"],
@@ -53,7 +53,7 @@
   },
   {
     "id": "room-07",
-    "name": "Boardroom — Summit",
+    "name": "Boardroom - Summit",
     "floor": 2,
     "capacity": 14,
     "amenities": ["projector", "video-conf", "whiteboard", "phone"],
@@ -62,7 +62,7 @@
   },
   {
     "id": "room-08",
-    "name": "Training Room — Academy",
+    "name": "Training Room - Academy",
     "floor": 2,
     "capacity": 20,
     "amenities": ["projector", "whiteboard", "video-conf"],
@@ -71,7 +71,7 @@
   },
   {
     "id": "room-09",
-    "name": "Meeting Room — Skyline",
+    "name": "Meeting Room - Skyline",
     "floor": 3,
     "capacity": 10,
     "amenities": ["projector", "video-conf", "whiteboard"],
@@ -80,7 +80,7 @@
   },
   {
     "id": "room-10",
-    "name": "Lounge — Rooftop",
+    "name": "Lounge - Rooftop",
     "floor": 3,
     "capacity": 16,
     "amenities": ["video-conf", "whiteboard"],
@@ -89,7 +89,7 @@
   },
   {
     "id": "room-11",
-    "name": "Boardroom — Heritage (under renovation)",
+    "name": "Boardroom - Heritage (under renovation)",
     "floor": 3,
     "capacity": 12,
     "amenities": ["projector", "phone"],

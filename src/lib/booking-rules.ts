@@ -1,4 +1,4 @@
-// ჯავშნის წესები — სუფთა ფუნქციები (React-ის, localStorage-ის, async-ის გარეშე).
+// ჯავშნის წესები - სუფთა ფუნქციები (React-ის, localStorage-ის, async-ის გარეშე).
 // ერთსა და იმავე წესებს იყენებს ფორმაც და API-იც.
 import type { Booking } from "@/types/booking";
 import {

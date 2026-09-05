@@ -5,7 +5,7 @@ import styled from "styled-components";
 import { addDays, addWeeks, format, parseISO, startOfWeek } from "date-fns";
 import type { Room } from "@/types/rooms";
 import { useScheduleParams } from "@/hooks/useScheduleParams";
-import { Button, Select } from "@/components/ui";
+import { Button, Input, Select } from "@/components/ui";
 
 const Bar = styled.div`
   display: flex;
@@ -18,6 +18,11 @@ const Bar = styled.div`
 const Range = styled.strong`
   font-size: 1rem;
   min-width: 200px;
+`;
+
+const DateInput = styled(Input)`
+  width: auto;
+  padding: ${({ theme }) => theme.space(1)} ${({ theme }) => theme.space(2)};
 `;
 
 const Toggle = styled.div`
@@ -76,6 +81,13 @@ export default function ScheduleToolbar({ rooms }: { rooms: Room[] }) {
         ›
       </Button>
       <Range>{rangeLabel}</Range>
+
+      <DateInput
+        type="date"
+        value={date}
+        onChange={(e) => e.target.value && setDate(e.target.value)}
+        aria-label="Jump to date"
+      />
 
       <Spacer />
 

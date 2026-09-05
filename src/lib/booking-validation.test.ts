@@ -16,7 +16,7 @@ import {
   validateBooking,
 } from "./booking-rules";
 
-// Local-time constructor — keeps every case deterministic regardless of the
+// Local-time constructor - keeps every case deterministic regardless of the
 // runner's TZ, which matters because isOnGrid / minutesIntoDay / date-fns'
 // calendar-day math all work in local time. Month is 1-indexed here.
 const at = (y: number, m: number, d: number, h = 0, min = 0, s = 0, ms = 0) =>

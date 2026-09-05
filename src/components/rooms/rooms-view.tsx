@@ -8,6 +8,7 @@ import {
   Container,
   EmptyState,
   ErrorState,
+  FetchingHint,
   PageHeader,
   Skeleton,
 } from "@/components/ui";
@@ -43,6 +44,8 @@ export default function RoomsView() {
       </PageHeader>
 
       <RoomFilters count={rooms.data?.length} />
+
+      {rooms.isFetching && !rooms.isPending && <FetchingHint />}
 
       {rooms.isPending && (
         <Grid>

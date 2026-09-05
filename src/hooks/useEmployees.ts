@@ -5,7 +5,7 @@ import { useQuery } from "@tanstack/react-query";
 import type { Employee } from "@/types/employee";
 import { getEmployees } from "@/lib/api/employees";
 
-// ყველა თანამშრომელი. staleTime დიდია — სია პრაქტიკულად არ იცვლება.
+// ყველა თანამშრომელი. staleTime დიდია - სია პრაქტიკულად არ იცვლება.
 export function useEmployees() {
   return useQuery({
     queryKey: ["employees"],

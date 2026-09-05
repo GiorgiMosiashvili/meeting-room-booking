@@ -3,7 +3,7 @@
 // ხელით აწყობილი დროის ბადე. სათაურები და საათების სვეტი "წებოვანია" (sticky),
 // ბადე გადააგორავებს კონტეინერში, გვერდი კი ადგილზე რჩება.
 // ცარიელ უჯრაზე დაჭერა → ახალი ჯავშანი; ბლოკზე დაჭერა → დეტალი.
-import { isSameDay, parseISO } from "date-fns";
+import { format, isSameDay, parseISO } from "date-fns";
 import styled from "styled-components";
 import type { Booking } from "@/types/booking";
 import { BUSINESS_END_MIN, BUSINESS_START_MIN } from "@/lib/booking-rules";
@@ -148,6 +148,55 @@ const NowLine = styled.div`
   height: 2px;
   background: ${({ theme }) => theme.color.danger};
   z-index: 2;
+
+  &::before {
+    content: "";
+    position: absolute;
+    left: -3px;
+    top: -3px;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: ${({ theme }) => theme.color.danger};
+  }
+`;
+
+const NowLabel = styled.div`
+  position: absolute;
+  right: 4px;
+  font-size: 0.6rem;
+  font-weight: 700;
+  color: ${({ theme }) => theme.color.danger};
+  transform: translateY(-100%);
+`;
+
+const Legend = styled.p`
+  display: flex;
+  align-items: center;
+  gap: ${({ theme }) => theme.space(2)};
+  font-size: 0.78rem;
+  color: ${({ theme }) => theme.color.textMuted};
+  margin-top: ${({ theme }) => theme.space(2)};
+
+  span {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+  }
+  i {
+    display: inline-block;
+    width: 10px;
+    height: 2px;
+    background: ${({ theme }) => theme.color.danger};
+    font-style: normal;
+  }
+`;
+
+const EmptyNote = styled.p`
+  text-align: center;
+  padding: ${({ theme }) => theme.space(2)};
+  color: ${({ theme }) => theme.color.textMuted};
+  font-size: 0.85rem;
 `;
 
 const minFromStart = (d: Date) =>
@@ -171,74 +220,104 @@ export default function TimeGrid({
 }) {
   const now = new Date();
   const nowTop = (minFromStart(now) / SLOT_MIN) * SLOT_PX;
+  const showsNowLine = nowTop >= 0 && nowTop <= TOTAL_H;
+
+  const columnBookings = columns.map((c) =>
+    bookings.filter(
+      (b) =>
+        b.roomId === c.roomId &&
+        b.status !== "cancelled" &&
+        isSameDay(parseISO(b.start), parseISO(`${c.date}T12:00:00`)),
+    ),
+  );
+  const isEmpty = columnBookings.every((list) => list.length === 0);
 
   return (
-    <Scroll>
-      <Grid $cols={columns.length}>
-        <Corner />
-        {columns.map((c) => (
-          <ColHead key={c.key}>
-            <span>{c.label}</span>
-            {c.sublabel && <small>{c.sublabel}</small>}
-          </ColHead>
-        ))}
-
-        <Gutter>
-          {Array.from({ length: SLOT_COUNT / 2 + 1 }).map((_, i) => (
-            <HourLabel key={i} style={{ top: i * 2 * SLOT_PX }}>
-              {hhmm(i * 2)}
-            </HourLabel>
+    <>
+      <Scroll>
+        <Grid $cols={columns.length}>
+          <Corner />
+          {columns.map((c) => (
+            <ColHead key={c.key}>
+              <span>{c.label}</span>
+              {c.sublabel && <small>{c.sublabel}</small>}
+            </ColHead>
           ))}
-        </Gutter>
 
-        {columns.map((c) => {
-          const dayBookings = bookings.filter(
-            (b) =>
-              b.roomId === c.roomId &&
-              b.status !== "cancelled" &&
-              isSameDay(parseISO(b.start), parseISO(`${c.date}T12:00:00`)),
-          );
-          const isToday = isSameDay(now, parseISO(`${c.date}T12:00:00`));
+          <Gutter>
+            {Array.from({ length: SLOT_COUNT / 2 + 1 }).map((_, i) => (
+              <HourLabel key={i} style={{ top: i * 2 * SLOT_PX }}>
+                {hhmm(i * 2)}
+              </HourLabel>
+            ))}
+            {showsNowLine && (
+              <NowLabel style={{ top: nowTop }}>
+                {format(now, "HH:mm")}
+              </NowLabel>
+            )}
+          </Gutter>
 
-          return (
-            <Col key={c.key}>
-              {Array.from({ length: SLOT_COUNT }).map((_, i) => (
-                <Slot
-                  key={i}
-                  style={{ top: i * SLOT_PX }}
-                  aria-label={`Book ${c.label} at ${hhmm(i)}`}
-                  onClick={() => onEmptySlot(c.roomId, c.date, hhmm(i))}
-                />
-              ))}
+          {columns.map((c, colIndex) => {
+            const dayBookings = columnBookings[colIndex];
+            const isToday = isSameDay(now, parseISO(`${c.date}T12:00:00`));
 
-              {isToday && nowTop >= 0 && nowTop <= TOTAL_H && (
-                <NowLine style={{ top: nowTop }} aria-hidden />
-              )}
+            return (
+              <Col key={c.key}>
+                {Array.from({ length: SLOT_COUNT }).map((_, i) => (
+                  <Slot
+                    key={i}
+                    style={{ top: i * SLOT_PX }}
+                    aria-label={`Book ${c.label} at ${hhmm(i)}`}
+                    onClick={() => onEmptySlot(c.roomId, c.date, hhmm(i))}
+                  />
+                ))}
 
-              {dayBookings.map((b) => {
-                const s = parseISO(b.start);
-                const e = parseISO(b.end);
-                const top = Math.max(0, (minFromStart(s) / SLOT_MIN) * SLOT_PX);
-                const rawH =
-                  ((e.getTime() - s.getTime()) / 60000 / SLOT_MIN) * SLOT_PX;
-                const height =
-                  Math.min(TOTAL_H - top, Math.max(SLOT_PX, rawH)) - 2;
-                return (
-                  <Block
-                    key={b.id}
-                    style={{ top, height }}
-                    onClick={() => onBooking(b.id)}
-                    title={`${b.title} · ${formatTime(b.start)}–${formatTime(b.end)}`}
-                  >
-                    <strong>{b.title}</strong>
-                    {formatTime(b.start)}–{formatTime(b.end)}
-                  </Block>
-                );
-              })}
-            </Col>
-          );
-        })}
-      </Grid>
-    </Scroll>
+                {isToday && showsNowLine && (
+                  <NowLine style={{ top: nowTop }} aria-hidden />
+                )}
+
+                {dayBookings.map((b) => {
+                  const s = parseISO(b.start);
+                  const e = parseISO(b.end);
+                  const top = Math.max(
+                    0,
+                    (minFromStart(s) / SLOT_MIN) * SLOT_PX,
+                  );
+                  const rawH =
+                    ((e.getTime() - s.getTime()) / 60000 / SLOT_MIN) * SLOT_PX;
+                  const height =
+                    Math.min(TOTAL_H - top, Math.max(SLOT_PX, rawH)) - 2;
+                  return (
+                    <Block
+                      key={b.id}
+                      style={{ top, height }}
+                      onClick={() => onBooking(b.id)}
+                      title={`${b.title} · ${formatTime(b.start)}–${formatTime(b.end)}`}
+                    >
+                      <strong>{b.title}</strong>
+                      {formatTime(b.start)}–{formatTime(b.end)}
+                    </Block>
+                  );
+                })}
+              </Col>
+            );
+          })}
+        </Grid>
+      </Scroll>
+
+      <Legend>
+        <span>
+          <i /> Current time
+        </span>
+        <span>Click any empty cell to start a booking.</span>
+      </Legend>
+
+      {isEmpty && (
+        <EmptyNote>
+          No bookings in this view yet — click an empty cell above to create
+          one.
+        </EmptyNote>
+      )}
+    </>
   );
 }

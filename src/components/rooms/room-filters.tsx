@@ -49,7 +49,11 @@ const Row = styled.div`
   justify-content: space-between;
   align-items: center;
   font-size: 0.85rem;
-  color: ${({ theme }) => theme.color.textMuted};
+`;
+
+const Count = styled.span`
+  color: ${({ theme }) => theme.color.text};
+  font-weight: 600;
 `;
 
 const CAPACITY_OPTIONS = [1, 2, 4, 6, 10, 15];
@@ -130,9 +134,9 @@ export default function RoomFilters({ count }: { count?: number }) {
       </Amenities>
 
       <Row>
-        <span>
+        <Count>
           {count != null ? `${count} room${count === 1 ? "" : "s"}` : ""}
-        </span>
+        </Count>
         {isActive && (
           <Button $variant="ghost" onClick={reset}>
             Clear filters

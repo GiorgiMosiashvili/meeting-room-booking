@@ -86,7 +86,7 @@ export default function BookingDetailView({
           {room.data ? (
             <Link href={`/rooms/${room.data.id}`}>{room.data.name}</Link>
           ) : (
-            "—"
+            "-"
           )}
         </dd>
         <dt>Date</dt>
@@ -96,7 +96,7 @@ export default function BookingDetailView({
           {formatTime(b.start)} – {formatTime(b.end)}
         </dd>
         <dt>Organizer</dt>
-        <dd>{employees[b.organizerId]?.name ?? "—"}</dd>
+        <dd>{employees[b.organizerId]?.name ?? "-"}</dd>
         <dt>Attendees</dt>
         <dd>{attendees.length ? attendees.join(", ") : "None"}</dd>
         {b.description && (

@@ -25,6 +25,7 @@ import {
   ErrorList,
   ErrorState,
   Field,
+  FieldError,
   Input,
   PageHeader,
   Select,
@@ -155,7 +156,7 @@ function CreateOrEditForm({
       <Field className="full">
         Title
         <Input {...register("title")} placeholder="Sprint planning" />
-        {errors.title && <small>{errors.title.message}</small>}
+        {errors.title && <FieldError>{errors.title.message}</FieldError>}
       </Field>
 
       <Field>
@@ -168,7 +169,7 @@ function CreateOrEditForm({
             </option>
           ))}
         </Select>
-        {errors.roomId && <small>{errors.roomId.message}</small>}
+        {errors.roomId && <FieldError>{errors.roomId.message}</FieldError>}
       </Field>
 
       <Field>
@@ -181,7 +182,9 @@ function CreateOrEditForm({
             </option>
           ))}
         </Select>
-        {errors.organizerId && <small>{errors.organizerId.message}</small>}
+        {errors.organizerId && (
+          <FieldError>{errors.organizerId.message}</FieldError>
+        )}
       </Field>
 
       <Field>

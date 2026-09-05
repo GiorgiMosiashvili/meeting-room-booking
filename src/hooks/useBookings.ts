@@ -1,7 +1,12 @@
 "use client";
 
 // ჯავშნების Query/Mutation ჰუკები. მუტაციები invalidate-ს აკეთებენ და toast-ს აჩვენებენს.
-import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
+import {
+  keepPreviousData,
+  useMutation,
+  useQuery,
+  useQueryClient,
+} from "@tanstack/react-query";
 import { toast } from "sonner";
 import type { UpdateBookingInput, CreateBookingInput } from "@/types/booking";
 import {
@@ -13,11 +18,13 @@ import {
   type BookingFilters,
 } from "@/lib/api/bookings";
 
-// ჯავშნების სია ფილტრებით.
+// ჯავშნების სია ფილტრებით. ძველი შედეგი რჩება ეკრანზე ფილტრის შეცვლისას
+// (isFetching კი true-ა), რომ სია არ გაქრეს არჩევანის შეცვლისას.
 export function useBookings(filters: BookingFilters = {}) {
   return useQuery({
     queryKey: ["bookings", filters],
     queryFn: () => listBookings(filters),
+    placeholderData: keepPreviousData,
   });
 }
 

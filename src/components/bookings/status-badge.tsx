@@ -11,7 +11,7 @@ export default function StatusBadge({ booking }: { booking: Booking }) {
   }
   const started = isPast(new Date(booking.start));
   const ended = isPast(new Date(booking.end));
-  if (ended) return <Badge>Past</Badge>;
+  if (ended) return <Badge $tone="warning">Past</Badge>;
   if (started) return <Badge $tone="success">In progress</Badge>;
   return <Badge $tone="success">Confirmed</Badge>;
 }

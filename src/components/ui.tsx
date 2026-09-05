@@ -40,7 +40,9 @@ export const Card = styled.div`
 `;
 
 // badge.
-export const Badge = styled.span<{ $tone?: "default" | "success" | "danger" }>`
+export const Badge = styled.span<{
+  $tone?: "default" | "success" | "danger" | "warning";
+}>`
   display: inline-flex;
   align-items: center;
   gap: ${({ theme }) => theme.space(1)};
@@ -53,13 +55,17 @@ export const Badge = styled.span<{ $tone?: "default" | "success" | "danger" }>`
       ? theme.color.successSoft
       : $tone === "danger"
         ? theme.color.dangerSoft
-        : theme.color.surfaceAlt};
+        : $tone === "warning"
+          ? theme.color.warningSoft
+          : theme.color.surfaceAlt};
   color: ${({ theme, $tone }) =>
     $tone === "success"
       ? theme.color.success
       : $tone === "danger"
         ? theme.color.danger
-        : theme.color.textMuted};
+        : $tone === "warning"
+          ? theme.color.warning
+          : theme.color.textMuted};
 `;
 
 // ღილაკი.
@@ -118,6 +124,14 @@ export const Textarea = styled.textarea`
   background: ${({ theme }) => theme.color.surface};
   font-size: 0.9rem;
   resize: vertical;
+`;
+
+// ცალკეული ველის ვალიდაციის შეცდომა (წითელი).
+export const FieldError = styled.small`
+  display: block;
+  color: ${({ theme }) => theme.color.danger};
+  font-weight: 400;
+  margin-top: 2px;
 `;
 
 // ვალიდაციის შეცდომების სია (ფორმის ან API-ს).
@@ -202,6 +216,29 @@ export function EmptyState({
   );
 }
 
+const ErrorMessage = styled.p`
+  color: ${({ theme }) => theme.color.danger};
+`;
+
+const FetchingRow = styled.div`
+  display: flex;
+  align-items: center;
+  gap: ${({ theme }) => theme.space(2)};
+  color: ${({ theme }) => theme.color.textMuted};
+  font-size: 0.85rem;
+  margin-bottom: ${({ theme }) => theme.space(2)};
+`;
+
+// მცირე ინდიკატორი: სია უკვე ეკრანზეა, ფონზე კი ახალი მონაცემი მოდის
+// (ფილტრის/ძებნის შეცვლისას keepPreviousData-სთან ერთად გამოსაყენებელი).
+export function FetchingHint() {
+  return (
+    <FetchingRow role="status" aria-live="polite">
+      <Spinner style={{ width: 14, height: 14 }} /> Updating…
+    </FetchingRow>
+  );
+}
+
 // შეცდომის მდგომარეობა (retry ღილაკით).
 export function ErrorState({
   message,
@@ -213,7 +250,7 @@ export function ErrorState({
   return (
     <StateBox>
       <h3>Something went wrong</h3>
-      <p>{message}</p>
+      <ErrorMessage>{message}</ErrorMessage>
       {onRetry && (
         <div style={{ marginTop: 16 }}>
           <Button $variant="ghost" onClick={onRetry}>

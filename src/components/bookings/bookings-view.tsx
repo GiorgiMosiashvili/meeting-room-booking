@@ -9,6 +9,7 @@ import {
   Container,
   EmptyState,
   ErrorState,
+  FetchingHint,
   PageHeader,
   Skeleton,
 } from "@/components/ui";
@@ -32,6 +33,8 @@ export default function BookingsView() {
       </PageHeader>
 
       <BookingFilters count={bookings.data?.length} />
+
+      {bookings.isFetching && !bookings.isPending && <FetchingHint />}
 
       {bookings.isPending && <Skeleton $h="12rem" />}
 

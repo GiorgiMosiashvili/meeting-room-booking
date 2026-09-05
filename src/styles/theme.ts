@@ -16,6 +16,8 @@ export const theme = {
     dangerSoft: "#fdecea",
     success: "#127a3d",
     successSoft: "#e5f3ec",
+    warning: "#8a6a00",
+    warningSoft: "#fdf3d7",
     focus: "#93b4f5",
   },
   space: (n: number) => `${n * 4}px`,
